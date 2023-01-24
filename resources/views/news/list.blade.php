@@ -6,7 +6,7 @@
             @foreach ($news as $item)
                 <div class="col-12">
                     <h2>{{$item->title}}</h2>
-                    <div class="subtitle">{{$item->created_at}} | {{$item->user}}</div>
+                    <div class="subtitle">Created by {{$item->user->name}} on {{$item->created_at}}</div>
                     <div>{{$item->text}}</div>
                 </div>
             @endforeach

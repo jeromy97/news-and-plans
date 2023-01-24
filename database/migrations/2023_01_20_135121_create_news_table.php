@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained();
             $table->string('title');
             $table->text('text')->default('');
-            $table->enum('created_from_plan', ['0', '1'])->default('1');
+            $table->enum('created_from_plan', ['0', '1'])->default('0');
             $table->enum('special', ['0', '1'])->default('0');
             $table->timestamps();
         });
