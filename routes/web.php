@@ -37,3 +37,5 @@ Route::post('/plans/create', [PlansController::class, 'create'])->name('plansCre
 Route::get('/plans/{plan}', [PlansController::class, 'detail'])->middleware('auth');
 Route::get('/plans/{plan}/edit', [PlansController::class, 'edit'])->middleware('auth');
 Route::post('/plans/update', [PlansController::class, 'update'])->middleware('auth');
+Route::get('/plans/{plan}/publish', [PlansController::class, 'publishEdit'])->middleware('auth');
+Route::post('/plans/publish', [PlansController::class, 'publish'])->middleware('auth');

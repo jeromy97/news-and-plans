@@ -3,15 +3,15 @@
 <div class="container">
     <div class="row">
         <div class="col-auto">
-            <a href="{{url("plans/$plan->id")}}" class="btn btn-secondary mb-3">Back</a>
+            <a href="{{url("plans/$plan->id")}}" class="btn btn-secondary mb-3">Cancel</a>
         </div>
     </div>
     <div class="card">
         <h2 class="card-header">
-            Edit plan
+            Publish as news item
         </h2>
         <div class="card-body">
-            <form action="{{url("plans/update")}}" method="post">
+            <form action="{{url("plans/publish")}}" method="post">
                 @csrf
 
                 <input type="hidden" name="id" value="{{$plan->id}}">
@@ -20,8 +20,8 @@
                 <input type="text" class="form-control" id="title" name="title" value="{{$plan->title}}" required autofocus>
                 <br>
 
-                <label for="text" class="form-label">Description <small>*</small></label>
-                <textarea name="description" id="description" class="form-control" required>{{$plan->description}}</textarea>
+                <label for="text" class="form-label">Body <small>*</small></label>
+                <textarea name="text" id="text" class="form-control" required>{{$plan->description}}</textarea>
                 <br>
 
                 <div class="form-check">
@@ -30,7 +30,7 @@
                 </div>
                 <br>
 
-                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="submit" class="btn btn-primary">Publish</button>
             </form>
         </div>
     </div>

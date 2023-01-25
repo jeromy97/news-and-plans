@@ -19,6 +19,7 @@
                     <div class="btn-group" role="group">
                         <a href="{{url("plans/$plan->id")}}" class="btn btn-outline-primary btn-sm ms-auto mb-3">View</a>
                         <a href="{{url("plans/$plan->id/edit")}}" class="btn btn-outline-warning btn-sm ms-auto mb-3">Edit</a>
+                        <a href="{{url("plans/$plan->id/publish")}}" class="btn btn-outline-success btn-sm ms-auto mb-3">Publish</a>
                     </div>
                     @if (!$loop->last)
                         <hr>

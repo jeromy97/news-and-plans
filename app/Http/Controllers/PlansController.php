@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\News;
 use App\Models\Plan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -65,5 +66,34 @@ class PlansController extends Controller
         $plan->save();
 
         return redirect('plans')->with('msg', 'Plan saved successfully');
+    }
+
+    public function publishEdit(Plan $plan)
+    {
+        return view('plans.publish', ['plan' => $plan]);
+    }
+
+    public function publish(Request $request)
+    {
+        $request->validate([
+            'id' => 'required|integer',
+            'title' => 'required',
+            'text' => 'required'
+        ]);
+
+        // create news item from plan
+        News::create([
+            'user_id' => Auth::user()->id,
+            'title' => $request->input('title'),
+            'text' => $request->input('text'),
+            'created_from_plan' => '1',
+            'special' => strval(intval(boolval($request->input('special'))))
+        ]);
+
+        // delete the plan
+        $plan = Plan::find($request->input('id'));
+        $plan->delete();
+
+        return redirect("news")->with('msg', 'News item published successfully');
     }
 }

@@ -25,8 +25,8 @@
                 <br>
 
                 <div class="form-check">
-                    <input type="checkbox" name="special" id="special" class="form-check-input">
-                    <label for="special" class="form-check-label" {{$news->special === '1' ? 'checked' : ''}}>Is special?</label>
+                    <input type="checkbox" name="special" id="special" class="form-check-input" {{$news->special === '1' ? 'checked' : ''}}>
+                    <label for="special" class="form-check-label">Is special?</label>
                 </div>
                 <br>
 

@@ -6,7 +6,10 @@
             <a href="{{route('plans')}}" class="btn btn-secondary mb-3">Back</a>
         </div>
         <div class="col-auto ms-auto">
-            <a href="{{url("plans/$plan->id/edit")}}" class="btn btn-warning">Edit</a>
+            <div class="btn-group" role="group">
+                <a href="{{url("plans/$plan->id/edit")}}" class="btn btn-warning">Edit</a>
+                <a href="{{url("plans/$plan->id/publish")}}" class="btn btn-success">Publish</a>
+            </div>
         </div>
     </div>
     <div class="card">
