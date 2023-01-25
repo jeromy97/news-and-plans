@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\NewsController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,4 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [NewsController::class, 'list']);
+// login routes
+Route::get('/login', [LoginController::class, 'login'])->name('login');
+Route::post('/login', [LoginController::class, 'authenticate']);
+
+// news routes
+Route::get('/', [NewsController::class, 'list'])->middleware('auth');
+Route::get('/news', [NewsController::class, 'list'])->name('news')->middleware('auth');
