@@ -13,9 +13,11 @@
                 <div class="col-sm-6 col-md-4 col-lg-3">
                     <div class="card mb-4">
                         <div class="card-body">
-                            <h3 class="card-title">{{$plan->title}}</h3>
-                            <div class="card-subtitle mb-2 text-muted"><small>Created by {{$plan->user->name}} on {{$plan->created_at}}</small></div>
-                            <p class="card-text">{{$plan->description}}</p>
+                            <div class="{{$plan->special === '1' ? 'text-danger' : ''}} mb-2">
+                                <h3 class="card-title">{{$plan->title}}</h3>
+                                <div class="card-subtitle mb-2 text-{{$plan->special === '1' ? 'danger-emphasis' : 'muted'}}"><small>Created by {{$plan->user->name}} on {{$plan->created_at}}</small></div>
+                                <p class="card-text">{{$plan->description}}</p>
+                            </div>
                             <div class="btn-group" role="group">
                                 <a href="{{url("plans/$plan->id")}}" class="btn btn-outline-primary btn-sm ms-auto mb-3">View</a>
                                 <a href="{{url("plans/$plan->id/edit")}}" class="btn btn-outline-warning btn-sm ms-auto mb-3">Edit</a>

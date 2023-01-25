@@ -9,12 +9,12 @@
             <a href="{{url("news/$news->id/edit")}}" class="btn btn-warning">Edit</a>
         </div>
     </div>
-    <div class="card">
+    <div class="card {{$news->special === '1' ? 'text-danger' : ''}}">
         <h2 class="card-header">
             {{$news->title}}
         </h2>
         <div class="card-body">
-            <div class="card-subtitle mb-2 text-muted">Created by {{$news->user->name}} on {{$news->created_at}}</div>
+            <div class="card-subtitle mb-2 text-{{$news->special === '1' ? 'danger-emphasis' : 'muted'}}">Created by {{$news->user->name}} on {{$news->created_at}}</div>
             <p class="card-text">{{$news->text}}</p>
         </div>
     </div>
