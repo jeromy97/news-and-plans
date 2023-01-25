@@ -23,3 +23,8 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 // news routes
 Route::get('/', [NewsController::class, 'list'])->middleware('auth');
 Route::get('/news', [NewsController::class, 'list'])->name('news')->middleware('auth');
+Route::get('/news/add', [NewsController::class, 'add'])->name('newsAdd')->middleware('auth');
+Route::post('/news/create', [NewsController::class, 'create'])->name('newsCreate')->middleware('auth');
+Route::get('/news/{news}', [NewsController::class, 'detail'])->middleware('auth');
+Route::get('/news/{news}/edit', [NewsController::class, 'edit'])->middleware('auth');
+Route::post('/news/update', [NewsController::class, 'update'])->middleware('auth');

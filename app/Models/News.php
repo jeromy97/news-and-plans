@@ -9,6 +9,19 @@ class News extends Model
 {
     use HasFactory;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'user_id',
+        'title',
+        'text',
+        'created_from_plan',
+        'special'
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);
