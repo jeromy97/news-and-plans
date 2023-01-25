@@ -24,6 +24,7 @@
                         <hr>
                     @endif
                 @endforeach
+                {{$news->links()}}
             @else
                 <div class="col-12 text-center">No news items were found</div>
             @endif
