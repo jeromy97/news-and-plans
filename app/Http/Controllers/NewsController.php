@@ -26,7 +26,7 @@ class NewsController extends Controller
             'text' => 'required'
         ]);
 
-        $news = News::create([
+        News::create([
             'user_id' => Auth::user()->id,
             'title' => $request->input('title'),
             'text' => $request->input('text'),

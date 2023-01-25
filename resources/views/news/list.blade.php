@@ -17,8 +17,8 @@
                     <div class="card-subtitle mb-2 text-muted">Created by {{$item->user->name}} on {{$item->created_at}}</div>
                     <p class="card-text">{{$item->text}}</p>
                     <div class="btn-group" role="group">
-                        <a href="{{url("news/$item->id")}}" class="btn btn-outline-primary ms-auto mb-3">View</a>
-                        <a href="{{url("news/$item->id/edit")}}" class="btn btn-outline-warning ms-auto mb-3">Edit</a>
+                        <a href="{{url("news/$item->id")}}" class="btn btn-outline-primary btn-sm ms-auto mb-3">View</a>
+                        <a href="{{url("news/$item->id/edit")}}" class="btn btn-outline-warning btn-sm ms-auto mb-3">Edit</a>
                     </div>
                     @if (!$loop->last)
                         <hr>

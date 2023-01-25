@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\PlansController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,3 +29,12 @@ Route::post('/news/create', [NewsController::class, 'create'])->name('newsCreate
 Route::get('/news/{news}', [NewsController::class, 'detail'])->middleware('auth');
 Route::get('/news/{news}/edit', [NewsController::class, 'edit'])->middleware('auth');
 Route::post('/news/update', [NewsController::class, 'update'])->middleware('auth');
+
+// plans routes
+Route::get('/', [PlansController::class, 'list'])->middleware('auth');
+Route::get('/plans', [PlansController::class, 'list'])->name('plans')->middleware('auth');
+Route::get('/plans/add', [PlansController::class, 'add'])->name('plansAdd')->middleware('auth');
+Route::post('/plans/create', [PlansController::class, 'create'])->name('plansCreate')->middleware('auth');
+Route::get('/plans/{plan}', [PlansController::class, 'detail'])->middleware('auth');
+Route::get('/plans/{plan}/edit', [PlansController::class, 'edit'])->middleware('auth');
+Route::post('/plans/update', [PlansController::class, 'update'])->middleware('auth');

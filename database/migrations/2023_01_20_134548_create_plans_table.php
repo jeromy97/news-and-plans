@@ -16,9 +16,10 @@ return new class extends Migration
         Schema::create('plans', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
+            $table->string('title');
             $table->text('description')->default('');
             $table->enum('special', ['0', '1'])->default('0');
-            $table->integer('position');
+            $table->integer('position')->default(0);
             $table->timestamps();
         });
     }
