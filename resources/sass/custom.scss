@@ -1,0 +1,9 @@
+.news, .plans{
+    h3 > a{
+        color: var(--bs-body-color);
+        text-decoration: none;
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+}
