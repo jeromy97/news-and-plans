@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
         Organisation::factory(1)
             ->has(
                 User::factory(1)
-                    ->has(Plan::factory(100))
+                    ->has(Plan::factory(10))
                     ->has(News::factory(100))
                     ->state(function () {
                         return [

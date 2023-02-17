@@ -6,7 +6,7 @@
             New item
         </h2>
         <div class="card-body">
-            <form action="{{route('newsCreate')}}" method="post">
+            <form action="{{route('newsCreate')}}" method="post" enctype="multipart/form-data">
                 @csrf
 
                 <label for="title" class="form-label">Title <small>*</small></label>
@@ -15,6 +15,10 @@
 
                 <label for="text" class="form-label">Body <small>*</small></label>
                 <textarea name="text" id="text" class="form-control" required></textarea>
+                <br>
+
+                <label for="files" class="form-label">Afbeeldingen</label>
+                <input type="file" name="file" id="file" class="form-control">
                 <br>
 
                 <div class="form-check">

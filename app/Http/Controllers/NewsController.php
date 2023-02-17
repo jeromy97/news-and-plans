@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\News;
+use App\Models\File;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -39,13 +41,28 @@ class NewsController extends Controller
             'text' => 'required'
         ]);
 
+        /** @var User $user */
         $user = Auth::user();
 
-        $user->news()->create([
+        // upload file
+        if ($request->file('file') !== null) {
+            $path = $request->file('file')->store('news');
+    
+            // store path
+            $file = new File;
+            $file->path = $path;
+            $file->save();
+            $fileId = $file->id;
+        }
+        
+        $userData = [
             'title' => $request->input('title'),
             'text' => $request->input('text'),
             'special' => strval(intval(boolval($request->input('special'))))
-        ]);
+        ];
+        if (isset($fileId)) $userData['file_id'] = $fileId;
+
+        $user->news()->create($userData);
 
         return redirect("news")->with('msg', 'News item saved successfully');
     }

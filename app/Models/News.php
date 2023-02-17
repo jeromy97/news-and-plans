@@ -16,6 +16,7 @@ class News extends Model
      */
     protected $fillable = [
         'user_id',
+        'file_id',
         'title',
         'text',
         'created_from_plan',
