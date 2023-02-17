@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Organisation;
+use App\Models\Plan;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -18,6 +19,7 @@ class OrganisationSeeder extends Seeder
         Organisation::factory(1)
             ->has(
                 User::factory(1)
+                    ->has(Plan::factory(10))
                     ->state(function () {
                         return [
                             'email' => 'jhettinga@fletcher.nl',

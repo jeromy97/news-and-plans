@@ -6,4 +6,8 @@
             text-decoration: underline;
         }
     }
+
+    .text-danger h3 > a{
+        color: var(--bs-danger);
+    }
 }
