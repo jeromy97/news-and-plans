@@ -5,6 +5,8 @@
             <div class="card">
                 <div class="card-body">
                     <h2 class="card-title">Login</h2>
+
+                    @include('modules/errors')
                     
                     <form action="{{url("login")}}" method="post">
                         @csrf

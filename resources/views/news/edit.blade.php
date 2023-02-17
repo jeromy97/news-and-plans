@@ -11,16 +11,7 @@
             Edit item
         </h2>
         <div class="card-body">
-            <!-- Errors -->
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
+            @include('modules/errors')
 
             <!-- Form -->
             <form action="{{ route('news.update', ['news' => $news->id]) }}" method="post">
