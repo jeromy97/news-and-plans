@@ -11,10 +11,20 @@
             Edit item
         </h2>
         <div class="card-body">
-            <form action="{{url("news/update")}}" method="post">
-                @csrf
+            <!-- Errors -->
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
 
-                <input type="hidden" name="id" value="{{$news->id}}">
+            <!-- Form -->
+            <form action="{{ route('news.update', ['news' => $news->id]) }}" method="post">
+                @csrf
 
                 <label for="title" class="form-label">Title <small>*</small></label>
                 <input type="text" class="form-control" id="title" name="title" value="{{$news->title}}" required autofocus>

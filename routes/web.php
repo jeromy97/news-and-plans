@@ -28,7 +28,7 @@ Route::get('/news/add', [NewsController::class, 'add'])->name('newsAdd')->middle
 Route::post('/news/create', [NewsController::class, 'create'])->name('newsCreate')->middleware('auth');
 Route::get('/news/{news}', [NewsController::class, 'detail'])->middleware('auth');
 Route::get('/news/{news}/edit', [NewsController::class, 'edit'])->middleware('auth');
-Route::post('/news/update', [NewsController::class, 'update'])->middleware('auth');
+Route::post('/news/update/{news}', [NewsController::class, 'update'])->middleware('auth')->name('news.update');
 
 // plans routes
 Route::get('/plans', [PlansController::class, 'list'])->name('plans')->middleware('auth');

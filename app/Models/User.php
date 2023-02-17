@@ -34,6 +34,15 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+	/**
+	 * The accessors to append to the model's array.
+	 *
+	 * @var array
+	 */
+	protected $appends = [
+		'news',
+	];
+
     /**
      * The attributes that should be cast.
      *
@@ -42,4 +51,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getNewsAttribute()
+    {
+        return $this->news()->get();
+    }
+
+    public function news()
+    {
+        return $this->hasMany(News::class, 'user_id', 'id');
+    }
 }
