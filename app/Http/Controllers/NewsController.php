@@ -7,6 +7,7 @@ use App\Models\File;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class NewsController extends Controller
 {
@@ -17,6 +18,7 @@ class NewsController extends Controller
 
     public function list()
     {
+        /** @var User $user */
         $user = Auth::user();
         $news = $user->news()->orderBy('created_at', 'desc')
             ->paginate(10);
@@ -47,12 +49,6 @@ class NewsController extends Controller
         // upload file
         if ($request->file('file') !== null) {
             $path = $request->file('file')->store('news');
-    
-            // store path
-            $file = new File;
-            $file->path = $path;
-            $file->save();
-            $fileId = $file->id;
         }
         
         $userData = [
@@ -60,7 +56,7 @@ class NewsController extends Controller
             'text' => $request->input('text'),
             'special' => strval(intval(boolval($request->input('special'))))
         ];
-        if (isset($fileId)) $userData['file_id'] = $fileId;
+        if (isset($path)) $userData['image'] = $path;
 
         $user->news()->create($userData);
 
