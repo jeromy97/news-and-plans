@@ -16,6 +16,7 @@
         <div class="card-body">
             <div class="card-subtitle mb-2 text-{{$news->special === '1' ? 'danger-emphasis' : 'muted'}}">Created by {{$news->user->name}} on {{$news->created_at}}</div>
             <p class="card-text">{{$news->text}}</p>
+            <img src="{{$news->image}}" alt="image" class="img-fluid">
         </div>
     </div>
 </div>

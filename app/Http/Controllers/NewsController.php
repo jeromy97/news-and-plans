@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Storage;
 
 class NewsController extends Controller
 {
+    private const UPLOAD_PATH = 'public/news';
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -48,7 +50,7 @@ class NewsController extends Controller
 
         // upload file
         if ($request->file('file') !== null) {
-            $path = $request->file('file')->store('news');
+            $path = $request->file('file')->store(self::UPLOAD_PATH);
         }
         
         $userData = [
@@ -71,8 +73,8 @@ class NewsController extends Controller
     public function update(Request $request, News $news)
     {
         $request->validate([
-            'title' => 'required|min:5|max:500',
-            'text' => 'required|min:10'
+            'title' => 'required|max:500',
+            'text' => 'required'
         ]);
 
         $news->title = $request->input('title');
