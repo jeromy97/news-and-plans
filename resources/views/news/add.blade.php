@@ -6,6 +6,8 @@
             New item
         </h2>
         <div class="card-body">
+            @include('modules/errors')
+
             <form action="{{route('newsCreate')}}" method="post" enctype="multipart/form-data">
                 @csrf
 
@@ -14,7 +16,7 @@
                 <br>
 
                 <label for="text" class="form-label">Body <small>*</small></label>
-                <textarea name="text" id="text" class="form-control" required></textarea>
+                <textarea name="text" id="text" class="form-control" rows="6" required></textarea>
                 <br>
 
                 <label for="files" class="form-label">Afbeeldingen</label>
@@ -27,7 +29,7 @@
                 </div>
                 <br>
 
-                <input type="submit" value="Inloggen" class="btn btn-primary">
+                <button type="submit" class="btn btn-primary">Add</button>
             </form>
         </div>
     </div>
